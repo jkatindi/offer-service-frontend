@@ -1,0 +1,13 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">List  of All Job Offers</div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <tr><th>ID job offer</th><th>Title job offer</th></tr>
+      <tr *ngFor="let offer of offers">
+           <td>{{offer.id}}</td>
+           <td>{{offer.title}}</td>
+        <td><a class="clickable" (click)="detailOffer(offer.id)">detail</a></td>
+      </tr>
+    </table>
+  </div>
+</div>
