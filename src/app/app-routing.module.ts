@@ -9,7 +9,8 @@ const routes: Routes = [
   {path:"list-offer",component:ListOfferComponent},
   {path:"detail-offer/:id",component:DetailOfferComponent},
   {path:"new-offer",component:NewOfferComponent},
-  {path:"update-offer/:id",component:UpdateOfferComponent}
+  {path:"update-offer/:id",component:UpdateOfferComponent},
+  {path: "", redirectTo: "/list-offer", pathMatch: "full"}
 ];
 
 @NgModule({

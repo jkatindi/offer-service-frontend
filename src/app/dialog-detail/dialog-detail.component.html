@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{detail.title}}</h2>
+<div>
+   <mat-dialog-content>
+      <p>id : {{detail.id}}</p>
+      <p>Title : {{detail.title}}</p>
+      <p>AvailablePlace : {{detail.availablePlace}}</p>
+      <p>Company Localisation : {{detail.generalInfo.localisation}}</p>
+      <p>Company name :  {{detail.generalInfo.companyName}}</p>
+   </mat-dialog-content>
+   <mat-dialog-actions align="end">
+      <button mat-raised-button color="primary" mat-dialog-close>OK </button>
+      <button mat-raised-button color="warn" (click)="modifiyOffer(detail.id)">Edit Offer</button>
+   </mat-dialog-actions>
+</div>

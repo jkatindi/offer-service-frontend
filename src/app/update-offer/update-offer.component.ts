@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder} from "@angular/forms";
+import {ServiceOffer} from "../services/service.offer";
 
 @Component({
   selector: 'app-update-offer',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateOfferComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _formBuilder : FormBuilder,private offerService: ServiceOffer) {
+
+  }
 
   ngOnInit(): void {
   }

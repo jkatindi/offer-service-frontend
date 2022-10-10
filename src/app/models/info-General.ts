@@ -1,8 +1,8 @@
 export class InfoGeneral
-{
-   id!:number;
+{  id!:number;
    localisation!: string;
    companyDescription!: string;
    companyName!: string;
+
 
 }

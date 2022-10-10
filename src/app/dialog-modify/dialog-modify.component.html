@@ -1,17 +1,17 @@
 <div class="main-div">
 
-  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-horizontal-stepper #stepper>
 
     <mat-step [stepControl]="titleForm">
       <form [formGroup]="titleForm">
-        <ng-template matStepLabel>description job </ng-template>
+        <ng-template matStepLabel><b>description job </b></ng-template>
         <mat-form-field>
           <mat-label>Title Job</mat-label>
-          <input  matInput placeholder="title" formControlName="title" required>
+          <input  matInput placeholder="title" formControlName="title" value="title" required>
         </mat-form-field><br>
         <mat-form-field>
           <mat-label>Position Held</mat-label>
-          <textarea id="posHeld" name="positionHeld" rows="10" cols="90"
+          <textarea id="posHeld" name="positionHeld" rows="10" cols="120"
                     matInput	formControlName="positionHeld" required>
         </textarea>
         </mat-form-field><br>
@@ -55,16 +55,16 @@
         <mat-form-field>
           <mat-label>Select degre</mat-label>
           <mat-select formControlName="requiredDegrees" multiple>
-            <mat-option *ngFor="let degree of degrees " [value]="degree">{{degree.degreeName}}</mat-option>
+            <mat-option *ngFor="let degree of degrees ">{{degree.degreeName}}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field class="chip-list">
           <mat-chip-list #chipList multiple="true">
-            <mat-chip  #c="matChip" *ngFor="let tech of techSkills " [selectable]="selectable"
+            <mat-chip  #c="matChip" *ngFor="let tech of detail.requiredTechs " [selectable]="selectable"
                        [value]="tech" [removable]="removable" (removed)="remove(tech)">
-                       {{tech.technology}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              {{tech.technology}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
             <input #techInput matInput placeholder="Add tech..."
                    [matAutocomplete]="auto" [matChipInputFor]="chipList"
@@ -76,24 +76,20 @@
               {{tech.technology}}
             </mat-option>
           </mat-autocomplete>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>required Experience</mat-label>
-            <input matInput placeholder="required_experience" formControlName="experMin" required>
-          </mat-form-field><br>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>required Experience</mat-label>
+          <input matInput placeholder="required_experience" formControlName="experMin" required>
+        </mat-form-field><br>
         <mat-form-field>
              <textarea id="generalProfil" placeholder="the profile of candatate"
                        name="generalProfil" rows="20" cols="100"
                        matInput	formControlName="generalProfil" required>
               </textarea>
         </mat-form-field>
-
-          <div class="myButton">
-            <button class="btn btn-primary " mat-button matStepperPrevious>Previous </button>
-            <button class="btn btn-primary next-btn" mat-button (click)="validateOffer()">Confirm</button>
-          </div>
       </form>
     </mat-step>
 
   </mat-horizontal-stepper>
 </div>
+

@@ -1,8 +1,8 @@
 export class TechSkillOffer{
-
-     id!: number;
-     technology!: string;
-
+  id!: number;
+  technology!: string;
+  constructor() {
+  }
 
 
 }
