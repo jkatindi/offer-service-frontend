@@ -20,7 +20,7 @@
           <input  matInput placeholder="AvailablePlace" formControlName="availablePlace" required>
         </mat-form-field>
         <div class="myButton">
-          <button mat-raised-button color="primary" matStepperPrevious>Previous </button>
+          <button mat-raised-button color="primary" (click)="closeWindow()">CLOSE </button>
           <button mat-raised-button color="accent" matStepperNext>Next ...</button>
         </div>
       </form>
@@ -55,7 +55,7 @@
         <mat-form-field class="fields">
           <mat-label>Select degre</mat-label>
             <p *ngFor="let deg of detail.requiredDegrees">{{deg.degreeName}}</p>
-          <mat-select formControlName="requiredDegrees"  (selectionChange)="myselection($event)"  multiple>
+          <mat-select formControlName="requiredDegrees"  multiple>
             <mat-option *ngFor="let degree of degrees " [value]="degree">{{degree.degreeName}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -98,5 +98,3 @@
     </mat-step>
   </mat-horizontal-stepper>
 </div>
-
-

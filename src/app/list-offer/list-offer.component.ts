@@ -38,8 +38,8 @@ export class ListOfferComponent implements AfterViewInit{
     const myDetailDialog=this.dialog.open(DialogDetailComponent,
       {data: row,
              panelClass: 'fullscreen-dialog',
-             height: '50vh',
-             width: '40%'
+             height: '90vh',
+             width: '100%'
            });
     myDetailDialog.afterClosed().subscribe((response)=>{
       console.log(response)

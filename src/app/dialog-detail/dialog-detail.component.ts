@@ -19,6 +19,7 @@ export class DialogDetailComponent implements OnInit {
   }
 
   modifiyOffer(id:any) {
-      this.dialog.open(DialogModifyComponent,{data: this.detail});
+    let ref=  this.dialog.open(DialogModifyComponent,{data: this.detail});
+      ref.afterClosed().subscribe(data => console.log(data) );
   }
 }

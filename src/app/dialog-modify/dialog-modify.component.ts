@@ -48,8 +48,6 @@ export class DialogModifyComponent implements OnInit {
       this.offerService.getAllDegrees().subscribe(response=>this.degrees=response);
       this.offerService.getAllTechnologies()
         .subscribe(response=>this.technologies=response);
-      alert('Test data '+JSON.stringify(this.detail));
-
       this.titleForm = this._formBuilder.group({
       title: [this.detail.title,Validators.required],
       positionHeld: [this.detail.positionHeld,Validators.required],
@@ -118,12 +116,7 @@ export class DialogModifyComponent implements OnInit {
     this.detail.availablePlace=this.titleForm.controls['availablePlace'].value;
     this.offerService.updateJobOff(this.detail).subscribe((response=>alert(response)));
   }
-  closeDialog(){
-
-  }
-
-  myselection(event: MatSelectChange) {
-    alert(JSON.stringify(event.value));
-
+  closeWindow(){
+       this.dialogRef.close();
   }
 }

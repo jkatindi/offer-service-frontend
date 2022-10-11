@@ -1,14 +1,22 @@
-<h2 mat-dialog-title>{{detail.title}}</h2>
-<div>
+<h2  mat-dialog-title align="center">{{detail.title}} ref : {{detail.id}}</h2>
+<div class="main-content">
    <mat-dialog-content>
-      <p>id : {{detail.id}}</p>
-      <p>Title : {{detail.title}}</p>
-      <p>AvailablePlace : {{detail.availablePlace}}</p>
-      <p>Company Localisation : {{detail.generalInfo.localisation}}</p>
-      <p>Company name :  {{detail.generalInfo.companyName}}</p>
+
+         <p><b>Title Job : </b> {{detail.title}}</p>
+         <p><b>Position Held : </b> {{detail.positionHeld}}</p>
+         <p><b>Available place : </b>{{detail.availablePlace}}</p>
+         <p><b>Location company : </b>{{detail.generalInfo.localisation}}</p>
+         <p><b>Name  company : </b> {{detail.generalInfo.companyName}}</p>
+         <p><b>Required profil : </b>{{detail.generalProfile}}</p>
+         <p><b>Required technologies :</b></p>
+         <p *ngFor="let tech of detail.requiredTechs" align=center>{{tech.technology}}</p>
+         <p><b>required degree :</b></p>
+         <p align="center" *ngFor="let deg of detail.requiredDegrees">{{deg.degreeName}}</p>
+
+
    </mat-dialog-content>
    <mat-dialog-actions align="end">
-      <button mat-raised-button color="primary" mat-dialog-close>OK </button>
+      <button mat-raised-button color="primary" mat-dialog-close>CLOSE </button>
       <button mat-raised-button color="warn" (click)="modifiyOffer(detail.id)">Edit Offer</button>
    </mat-dialog-actions>
 </div>
