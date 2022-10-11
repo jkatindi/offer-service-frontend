@@ -2,39 +2,25 @@
   margin-top: 8px;
 }
 
-.mat-form-field {
-  padding-left: 150px;
+
+.fields
+{
+  align-content: center;
+  width: 90%;
+
+  border:1px solid aliceblue;
+  padding:3px;
 }
 .main-div{
-  padding-left: 70px;
-  padding-right: 65px;
-}
-input{
-  height: 20px;
-  border: 1px solid black;
+  margin-left: 50px;
+  margin-right: 50px;
 
 }
-mat-horizontal-stepper{
+.main-stepper{
+  border: solid 1px;
 
 }
-.chip-list{
-  width: 45%;
-}
-.main-div
-{
 
-}
-/*button.next-btn{
-  padding: 7px 12px;
-  border-radius: 16px;
-  min-height: 32px;
-  background-color: #e0e0e0;
-  color: rgba(0,0,0,.87);
-  box-shadow:none;
-  border:none;
-  cursor: pointer;
-  outline:none;
-}*/
 
 
 

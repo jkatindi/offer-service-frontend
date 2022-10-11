@@ -138,6 +138,7 @@ export class NewOfferComponent implements OnInit {
     this.offer.experMin=this.techsForm.controls['experMin'].value;
     this.offer.availablePlace=this.titleForm.controls['availablePlace'].value;
     //this.offer.requiredTechs=this.techsForm.controls['requiredTechs'].value;
+    console.log(JSON.stringify(this.offer));
     this.offerService.addNewJobOffer(this.offer)
         .subscribe(response=>console.log(response));
 

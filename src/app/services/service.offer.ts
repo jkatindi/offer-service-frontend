@@ -20,6 +20,10 @@ export  class ServiceOffer
      return  this.http.get(this.hostQuery+"/offers/all/"+id)
        .pipe(map(response=>response.valueOf()));
    }
+   updateJobOff(job: JobOffer): Observable<any>{
+      return  this.http.put(this.hostCommand+"/updateOffer",job)
+        .pipe(map(response=>response.valueOf()));
+   }
 
    addNewJobOffer(offer: JobOffer){
      return this.http.post(this.hostCommand+"/addOffer",offer)
