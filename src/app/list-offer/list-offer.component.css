@@ -19,6 +19,8 @@
   font-weight: bold;
 
 }
-div{
-  padding-right: 52px;
+
+.paginator{
+  margin-right:90px;
+  width: auto;
 }
