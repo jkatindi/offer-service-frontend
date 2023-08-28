@@ -1,28 +1,16 @@
-<div class="container-fluid" style="background-color:black">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <button routerLink="/list-offer" mat-fab color="warn" aria-label="Example icon button with a home icon">
-            <mat-icon>home</mat-icon>
-          </button>
-        </div>
-        <div class="col-md-5" style="color:floralwhite">
-          <h3>ICT JOB</h3>
-        </div>
-        <div class="col-md-3">
-          <button  id="btn-add" routerLink="/new-offer" mat-raised-button color="accent">+ Job Offer</button>
-        </div>
-      </div>
-    </div>
-</div>
-<div class="container">
-    <div class="form-group">
-      <label>reacherch</label>
-      <input type="text">
-      <button (click)="reacherch()" class="btn btn-primary">Rechearch</button>
-    </div>
-  </div>
 
+<div class="container-fluid">
+    <nav class="p-3">
+      <ul class="nav nav-pills">
+        <li *ngFor="let action of actions">
+          <button routerLink="{{action.route}}" class="btn btn-outline-success ms-1">
+            {{action.title}}
+            <i class="bi bi-{{action.icon}}"></i>
+          </button>
+        </li>
+     </ul>
+    </nav>
+</div>
 <router-outlet></router-outlet>
 
 

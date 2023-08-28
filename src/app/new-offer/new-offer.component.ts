@@ -6,7 +6,6 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {TechSkillOffer} from "../models/techSkill-offer";
 import {DegreeOffer} from "../models/degree-offer";
 import {FormGroup} from "@angular/forms";
-import {ProfilOffer} from "../models/profil-offer";
 import { Router } from '@angular/router';
 import {InfoGeneral} from "../models/info-General";
 import {MatFormFieldControl} from "@angular/material/form-field";
@@ -145,6 +144,5 @@ export class NewOfferComponent implements OnInit {
 
 
   }
-
 
 }

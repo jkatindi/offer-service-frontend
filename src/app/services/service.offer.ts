@@ -29,6 +29,7 @@ export  class ServiceOffer
      return this.http.post(this.hostCommand+"/addOffer",offer)
        .pipe(map(response=>response.valueOf()));
    }
+
    getOneTechnology(id:number): Observable<any>{
       return  this.http.get(this.hostQuery+"/technologies/"+id)
         .pipe(map(response=>response.valueOf()));
@@ -43,10 +44,9 @@ export  class ServiceOffer
      return  this.http.get(this.hostQuery+"/degrees/"+id)
        .pipe(map(response=>response.valueOf()));
    }
-  getAllDegrees(): Observable<any>{
+
+   getAllDegrees(): Observable<any>{
     return  this.http.get(this.hostQuery+"/degrees/all")
       .pipe(map(response=>response.valueOf()));
   }
-
-
 }

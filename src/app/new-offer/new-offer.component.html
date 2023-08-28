@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: azure"><h2>Add  new Offer </h2></div>
+<div class="container-fluid" ><h2>Add  new Offer </h2></div>
 <div class="main-div">
   <mat-horizontal-stepper [linear]="isLinear" #stepper class="main-stepper">
 
@@ -19,9 +19,9 @@
           <mat-label>Available places</mat-label>
           <input  matInput placeholder="AvailablePlace" formControlName="availablePlace" required>
         </mat-form-field>
-        <div class="myButton">
-          <button class="btn btn-primary" mat-button matStepperPrevious>Previous </button>
-          <button  class="btn btn-primary" mat-button matStepperNext>Next ...</button>
+        <div class="container">
+          <button class="btn btn-warning" mat-button matStepperPrevious>Previous </button>
+          <button  class="btn btn-success" mat-button matStepperNext>Next ...</button>
         </div>
       </form>
 
@@ -42,9 +42,9 @@
                     formControlName="companyDescription" required>
                           </textarea>
         </mat-form-field><br>
-        <div class="myButton">
-          <button class="btn btn-primary" mat-button matStepperPrevious>Previous </button>
-          <button class="btn btn-primary" mat-button matStepperNext>Next ...</button>
+        <div class="container">
+          <button class="btn btn-warning" mat-button matStepperPrevious>Previous </button>
+          <button class="btn btn-success" mat-button matStepperNext>Next ...</button>
         </div>
       </form>
     </mat-step>
@@ -88,9 +88,9 @@
               </textarea>
         </mat-form-field>
 
-          <div class="myButton">
-            <button class="btn btn-primary " mat-button matStepperPrevious>Previous </button>
-            <button class="btn btn-primary next-btn" mat-button (click)="validateOffer()">Confirm</button>
+          <div class="container">
+            <button class="btn btn-warning" mat-button matStepperPrevious>Previous </button>
+            <button class="btn btn-success next-btn" mat-button (click)="validateOffer()">Confirm</button>
           </div>
       </form>
     </mat-step>

@@ -1,24 +1,50 @@
 .mat-stepper-horizontal {
-  margin-top: 8px;
+  margin-top: 20px;
+  
+}
+
+.container-fluid{
+  text-align: center;
 }
 
 
 .fields
 {
   align-content: center;
-  width: 90%;
-
-  border:1px solid aliceblue;
+  width: 70%;
   padding:3px;
 }
 .main-div{
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 60px;
+  /*margin-right: 50px;*/
+  width: 90%;
+  background-color:beige;
 
 }
 .main-stepper{
   border: solid 1px;
 
+}
+
+.container>.btn:not(:last-child){
+  margin-right: 16px;
+ 
+}
+.container{
+  align-content: center;
+}
+.container>.btn{
+  height: 28%;
+  /*width: 35% ;*/
+}
+
+textarea{
+
+  border:solid 1px grey;
+  
+}
+input{
+  border:solid 1px beige;
 }
 
 

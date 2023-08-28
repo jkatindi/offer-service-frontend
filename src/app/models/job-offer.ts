@@ -1,4 +1,3 @@
-import  {ProfilOffer} from "./profil-offer";
 import   {DegreeOffer} from "./degree-offer";
 import   {TechSkillOffer} from "./techSkill-offer";
 import {InfoGeneral} from "./info-General";

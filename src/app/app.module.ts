@@ -25,6 +25,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatDialogModule} from "@angular/material/dialog";
 import { DialogDetailComponent } from './dialog-detail/dialog-detail.component';
 import { DialogModifyComponent } from './dialog-modify/dialog-modify.component';
+import { HomeComponent } from './home/home.component';
+import { RechercheComponent } from './recherche/recherche.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { DialogModifyComponent } from './dialog-modify/dialog-modify.component';
     ListOfferComponent,
     DetailOfferComponent,
     DialogDetailComponent,
-    DialogModifyComponent
+    DialogModifyComponent,
+    HomeComponent,
+    RechercheComponent
   ],
     imports: [
         BrowserModule, AppRoutingModule,

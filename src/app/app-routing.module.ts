@@ -4,13 +4,17 @@ import {ListOfferComponent} from "./list-offer/list-offer.component";
 import {DetailOfferComponent} from "./detail-offer/detail-offer.component";
 import {NewOfferComponent} from "./new-offer/new-offer.component";
 import {UpdateOfferComponent} from "./update-offer/update-offer.component";
+import { HomeComponent } from './home/home.component';
+import { RechercheComponent } from './recherche/recherche.component';
 
 const routes: Routes = [
+  {path:"find-offer",component: RechercheComponent},
+  {path:"home-offer",component: HomeComponent},
   {path:"list-offer",component:ListOfferComponent},
   {path:"detail-offer/:id",component:DetailOfferComponent},
   {path:"new-offer",component:NewOfferComponent},
   {path:"update-offer/:id",component:UpdateOfferComponent},
-  {path: "", redirectTo: "/list-offer", pathMatch: "full"}
+  {path: "", redirectTo: "/home-offer", pathMatch: "full"}
 ];
 
 @NgModule({
