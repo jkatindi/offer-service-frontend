@@ -15,7 +15,10 @@ export  class JobOffer {
    experMin!:number;
    availablePlace!: number;
 
-
-
-
+}
+export interface  PageJobOffer{
+   jobOffers: JobOffer[];
+   page: number;
+   size: number;
+   totalPages: number;
 }

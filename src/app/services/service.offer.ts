@@ -1,28 +1,41 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {map, Observable} from "rxjs";
-import {JobOffer} from "../models/job-offer";
+import {map, Observable, of} from "rxjs";
+import {JobOffer, PageJobOffer} from "../models/job-offer";
 
 @Injectable()
 export  class ServiceOffer
 {
    hostQuery:string = "http://localhost:8087/query";
    hostCommand: string= "http://localhost:8087/command/offers";
+   jobOffers!:JobOffer[];
+
    constructor(private  http: HttpClient) {
+      this.getAllJobOffers()
+      .subscribe(data=>this.jobOffers=data);
+   }
+   getAllJobOffers(): Observable<JobOffer[]> {
+        return  this.http.get<Array<JobOffer>>(this.hostQuery+"/offers/all");
+   }
 
-   }
-   getAllJobOffers(): Observable<any> {
-        return  this.http.get(this.hostQuery+"/offers/all")
-          .pipe(map(response=>response.valueOf()));
+   getPageJobOffers(page: number, size: number): Observable<PageJobOffer> {
+      let index=page*size;
+      let totalPages=~~(this.jobOffers.length/size);
+      if(this.jobOffers.length%size !=0)
+         totalPages++;
+      let pageOffers=this.jobOffers.slice(index,index+size);
+      console.log(pageOffers);
+      return of({page: page,size: size,totalPages: totalPages,jobOffers: pageOffers });
    }
 
-   getJobOfferById(id:string): Observable<any> {
-     return  this.http.get(this.hostQuery+"/offers/all/"+id)
-       .pipe(map(response=>response.valueOf()));
+
+   getJobOfferById(id:string): Observable<JobOffer> {
+     return  this.http.get<JobOffer>(this.hostQuery+"/offers/all/"+id);
    }
+
    updateJobOff(job: JobOffer): Observable<any>{
-      return  this.http.put(this.hostCommand+"/updateOffer",job)
-        .pipe(map(response=>response.valueOf()));
+      return  this.http.put(this.hostCommand+"/updateOffer",job);
+
    }
 
    addNewJobOffer(offer: JobOffer){
@@ -32,21 +45,23 @@ export  class ServiceOffer
 
    getOneTechnology(id:number): Observable<any>{
       return  this.http.get(this.hostQuery+"/technologies/"+id)
-        .pipe(map(response=>response.valueOf()));
+
    }
 
    getAllTechnologies(): Observable<any>{
-     return  this.http.get(this.hostQuery+"/technologies/all")
-       .pipe(map(response=>response.valueOf()));
+     return  this.http.get<Array<any>>(this.hostQuery+"/technologies/all");
    }
 
    getOneDegree(id:number): Observable<any>{
-     return  this.http.get(this.hostQuery+"/degrees/"+id)
-       .pipe(map(response=>response.valueOf()));
+     return  this.http.get<any>(this.hostQuery+"/degrees/"+id);
    }
 
    getAllDegrees(): Observable<any>{
-    return  this.http.get(this.hostQuery+"/degrees/all")
-      .pipe(map(response=>response.valueOf()));
+    return  this.http.get<Array<any>>(this.hostQuery+"/degrees/all");
   }
+
+  research(keyWord: String) : Observable<JobOffer[]>{
+    return  this.http.get<Array<JobOffer>>('this.hostQuery+/offers/all?title_like=${keyWord}');
+  }
+
 }

@@ -1,9 +1,9 @@
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: azure;">
     <nav class="p-3">
       <ul class="nav nav-pills">
         <li *ngFor="let action of actions">
-          <button routerLink="{{action.route}}" class="btn btn-outline-success ms-1">
+          <button routerLink="{{action.route}}" class="btn btn-success ms-1">
             {{action.title}}
             <i class="bi bi-{{action.icon}}"></i>
           </button>

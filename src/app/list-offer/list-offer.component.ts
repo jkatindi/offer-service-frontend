@@ -6,48 +6,38 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogDetailComponent} from "../dialog-detail/dialog-detail.component";
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-list-offer',
   templateUrl: './list-offer.component.html',
   styleUrls: ['./list-offer.component.css']
 })
-export class ListOfferComponent implements AfterViewInit{
-  displayedColumns: string[] = ["id", "title","availablePlace"];
-  @ViewChild('matPaginator') paginator!: MatPaginator;
-  dataSource !:MatTableDataSource<JobOffer>;
-  @ViewChild('dialogDetail')
-  dialogDetail!: TemplateRef<any>;
-
-
-
-  constructor(public dialog: MatDialog,private serviceOffer: ServiceOffer,private  router:Router) {
+export class ListOfferComponent {
+  listJobOffers!: JobOffer[];
+  currentPage: number=0;
+  size: number=2;
+  totalPages: number=0;
+  constructor(private  router:Router,private serviceOffer:ServiceOffer,public dialog: MatDialog) {
   }
-  ngOnInit() {
-    this.serviceOffer.getAllJobOffers().subscribe((data)=>
-    {
-      this.dataSource=new MatTableDataSource<JobOffer>(data);
-      console.log('this  is ', this.paginator)
-    })
-    this.dataSource.paginator = this.paginator;
+  ngOnInit() :void {
+    this.handleGetPageOffers();
   }
 
-
-  detailOffer(row: any) {
-    //this.router.navigate(["detail-offer/",id]);
-    const myDetailDialog=this.dialog.open(DialogDetailComponent,
-      {data: row,
-             panelClass: 'fullscreen-dialog',
-             height: '90vh',
-             width: '100%'
-           });
-    myDetailDialog.afterClosed().subscribe((response)=>{
-      console.log(response)
-    })
+  handleGetPageOffers(){
+    this.serviceOffer.getPageJobOffers(this.currentPage,this.size)
+    .subscribe((data=>{
+                this.listJobOffers=data.jobOffers;
+                this.totalPages=data.totalPages;
+      }));
   }
 
-  ngAfterViewInit(){
-    this.dataSource.paginator=this.paginator;
-  }
 
+  detailOffer(id: String) {
+    this.router.navigate(["/detail-offer",id])
+  }
+  goToPage(index: number){
+    this.currentPage=index;
+    this.handleGetPageOffers();
+  }
 }
