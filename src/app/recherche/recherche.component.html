@@ -1,8 +1,35 @@
-<p>recherche works!</p>
+<p>recherche works! JK</p>
 <div class="container">
     <div class="form-group">
       <label>reacherch</label>
-      <input type="text">
-      <button (click)="reacherch()" class="btn btn-primary">Rechearch</button>
+      <input  [(ngModel)]="keyWord">
+      <button (click)="find()" class="btn btn-primary">Rechearch</button>
+    </div>
+
+  </div>
+
+
+
+  <div class="panel panel-primary" id="tableau">
+    <div class="panel-heading">Available  Job offers</div>
+    <div class="panel-body">
+       <table class="table table-striped">
+          <tr>
+            <th>Id offer</th><th>Title offer</th><th>Available places</th>
+            <th>details</th>
+          </tr>
+          <tr *ngFor="let offer of listJobOffers">
+            <td>{{offer.id}}</td>
+            <td>{{offer.title}}</td>
+            <td>{{offer.availablePlace}}</td>
+            <td><a class="clickable" (click)="detailOffer(offer.id)">Detail</a></td>
+          </tr>
+        </table>
+        <ul class="nav nav-pills">
+         
+            <li *ngFor="let item of [].constructor(this.totalPages); let i=index">
+              <a   (click)="goToPage(i)" class="btn btn-success">{{i}}</a>
+            </li>
+           </ul>
     </div>
   </div>

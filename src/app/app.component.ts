@@ -13,8 +13,7 @@ export class AppComponent {
     {title: "Avaible Job offer",route: "/list-offer",icon: "arrow-down-up text-success"},
     {title: "new Job Offer",route: "/new-offer",icon: "safe"},
     {title: "find offer",route: "/find-offer",icon: "search"}
-
-  ]
+   ];
   constructor(private serviceOffer: ServiceOffer) {
   }
 }

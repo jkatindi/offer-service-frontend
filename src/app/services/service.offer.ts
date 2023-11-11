@@ -10,22 +10,23 @@ export  class ServiceOffer
    hostCommand: string= "http://localhost:8087/command/offers";
    jobOffers!:JobOffer[];
 
-   constructor(private  http: HttpClient) {
-      this.getAllJobOffers()
-      .subscribe(data=>this.jobOffers=data);
+   constructor(private  http: HttpClient) {  
+    
    }
+
    getAllJobOffers(): Observable<JobOffer[]> {
         return  this.http.get<Array<JobOffer>>(this.hostQuery+"/offers/all");
    }
 
-   getPageJobOffers(page: number, size: number): Observable<PageJobOffer> {
-      let index=page*size;
-      let totalPages=~~(this.jobOffers.length/size);
-      if(this.jobOffers.length%size !=0)
-         totalPages++;
-      let pageOffers=this.jobOffers.slice(index,index+size);
-      console.log(pageOffers);
-      return of({page: page,size: size,totalPages: totalPages,jobOffers: pageOffers });
+   getPageJobOffers(page: number, size: number,listOffer:JobOffer[]): Observable<PageJobOffer> {
+    this.jobOffers=listOffer;
+    let index=page*size;
+    let totalPages=~~(this.jobOffers.length/size);
+    if(this.jobOffers.length%size !=0)
+       totalPages++;
+    let pageOffers=this.jobOffers.slice(index,index+size);
+    console.log(pageOffers);
+    return of({page: page,size: size,totalPages: totalPages,jobOffers: pageOffers });
    }
 
 
@@ -61,7 +62,18 @@ export  class ServiceOffer
   }
 
   research(keyWord: String) : Observable<JobOffer[]>{
-    return  this.http.get<Array<JobOffer>>('this.hostQuery+/offers/all?title_like=${keyWord}');
+    return  this.http.get<Array<JobOffer>>(this.hostQuery+"/all/offers/"+keyWord);
   }
 
+  updataResources(resources: JobOffer[]) 
+  {
+     this.jobOffers=resources;
+  
+  }
+
+  getResourceOffers(): JobOffer[]{
+    this.getAllJobOffers().subscribe(data=>this.jobOffers=data)
+    return  this.jobOffers;
+  }
+  
 }

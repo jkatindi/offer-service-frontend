@@ -8,11 +8,12 @@ import { HomeComponent } from './home/home.component';
 import { RechercheComponent } from './recherche/recherche.component';
 
 const routes: Routes = [
-  {path:"find-offer",component: RechercheComponent},
+  
   {path:"home-offer",component: HomeComponent},
   {path:"list-offer",component:ListOfferComponent},
   {path:"detail-offer/:id",component:DetailOfferComponent},
   {path:"new-offer",component:NewOfferComponent},
+  {path:"find-offer",component:RechercheComponent},
   {path:"update-offer/:id",component:UpdateOfferComponent},
   {path: "", redirectTo: "/home-offer", pathMatch: "full"}
 ];

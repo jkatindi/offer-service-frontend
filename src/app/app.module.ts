@@ -6,7 +6,7 @@ import { NewOfferComponent } from './new-offer/new-offer.component';
 import { UpdateOfferComponent } from './update-offer/update-offer.component';
 import { ListOfferComponent } from './list-offer/list-offer.component';
 import { DetailOfferComponent } from './detail-offer/detail-offer.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ServiceOffer} from "./services/service.offer";
 import {HttpClientModule} from "@angular/common/http";
 import {MatStepperModule} from "@angular/material/stepper";
@@ -46,7 +46,7 @@ import { RechercheComponent } from './recherche/recherche.component';
         MatInputModule, MatButtonModule, MatFormFieldModule,
         MatSelectModule, MatListModule, BrowserAnimationsModule,
         MatIconModule, MatChipsModule, MatAutocompleteModule,
-        MatTableModule,MatPaginatorModule,MatDialogModule
+        MatTableModule,MatPaginatorModule,MatDialogModule,FormsModule
     ],
   exports: [MatInputModule,MatFormFieldModule],
   providers: [ServiceOffer,
