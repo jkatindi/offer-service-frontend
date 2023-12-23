@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +8,7 @@ import { ListOfferComponent } from './list-offer/list-offer.component';
 import { DetailOfferComponent } from './detail-offer/detail-offer.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ServiceOffer} from "./services/service.offer";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatInputModule} from "@angular/material/input";
 import {MatListModule} from "@angular/material/list";
@@ -26,7 +26,14 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { DialogDetailComponent } from './dialog-detail/dialog-detail.component';
 import { DialogModifyComponent } from './dialog-modify/dialog-modify.component';
 import { HomeComponent } from './home/home.component';
+import { DataStateService } from './services/data-state.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HeaderComponent } from './header/header.component';
+import { AppHttpInterceptor } from './services/app-http.interceptor';
 import { RechercheComponent } from './recherche/recherche.component';
+import { StateAppService } from './services/state-app.service';
+
+
 
 @NgModule({
   declarations: [
@@ -38,7 +45,10 @@ import { RechercheComponent } from './recherche/recherche.component';
     DialogDetailComponent,
     DialogModifyComponent,
     HomeComponent,
+    NavBarComponent,
+    HeaderComponent,
     RechercheComponent
+    
   ],
     imports: [
         BrowserModule, AppRoutingModule,
@@ -49,12 +59,15 @@ import { RechercheComponent } from './recherche/recherche.component';
         MatTableModule,MatPaginatorModule,MatDialogModule,FormsModule
     ],
   exports: [MatInputModule,MatFormFieldModule],
-  providers: [ServiceOffer,
+  providers: [ServiceOffer,DataStateService,StateAppService,
     {
       provide: MAT_CHIPS_DEFAULT_OPTIONS,
       useValue: {
         separatorKeyCodes: [ENTER, COMMA]
       }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,useClass : AppHttpInterceptor,multi : true
     }
   ],
   bootstrap: [AppComponent]

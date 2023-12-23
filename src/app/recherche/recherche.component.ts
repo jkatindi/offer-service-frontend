@@ -1,54 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceOffer } from '../services/service.offer';
-import { JobOffer, PageJobOffer } from '../models/job-offer';
-import {Router} from "@angular/router";
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { JobOffer } from '../models/job-offer';
+import { StateAppService } from '../services/state-app.service';
 
 @Component({
   selector: 'app-recherche',
   templateUrl: './recherche.component.html',
   styleUrls: ['./recherche.component.css']
 })
-export class RechercheComponent  {
-
-  keyWord =new String("");
-  listJobOffers!: JobOffer[];
-  jobOffers!: JobOffer[]
-  size: number=2;
-  totalPages: number=0;
-  currentPage: number=0;
-  pageJobOffer!: Observable<JobOffer[]>;
-
-  constructor(private  router:Router,private offerService: ServiceOffer) { 
-    this.pageJobOffer=this.offerService.getAllJobOffers();
-  }
-
-  ngOnInit() {
-      this.hundleData();
-  }
-   
-   hundleData(){
-      this.pageJobOffer.subscribe((offerList)=>{
-            this.offerService.getPageJobOffers(this.currentPage,this.size,offerList)
-            .subscribe((jobOfferList)=>{
-              this.listJobOffers=jobOfferList.jobOffers;
-              this.totalPages=jobOfferList.totalPages;
-            })
-      })
-  }
-   detailOffer(id: String) {
-    this.router.navigate(["/detail-offer",id])
-  }
+export class RechercheComponent implements OnInit {
   
-  goToPage(index: number){
-    this.currentPage=index;
-    this.hundleData()
+  keyWord="";
+  test!: any[];
+  listJob!: Observable<JobOffer[]>
+  constructor(private service: ServiceOffer,private stateAppService: StateAppService,private router: Router) { 
+   
+  }
+     
+  ngOnInit(): void {
+   
   }
 
   find(){
-    this.pageJobOffer=this.offerService.research(this.keyWord);
-    this.hundleData();
-    
-  }
-
+       this.listJob=this.service.research(this.keyWord);
+       this.listJob.subscribe((data)=>{
+        this.stateAppService.updateData(data);
+        this.router.navigate(["/list-offer"]);
+      });
+       
+    }
 }

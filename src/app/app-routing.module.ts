@@ -5,7 +5,7 @@ import {DetailOfferComponent} from "./detail-offer/detail-offer.component";
 import {NewOfferComponent} from "./new-offer/new-offer.component";
 import {UpdateOfferComponent} from "./update-offer/update-offer.component";
 import { HomeComponent } from './home/home.component';
-import { RechercheComponent } from './recherche/recherche.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 const routes: Routes = [
   
@@ -13,8 +13,8 @@ const routes: Routes = [
   {path:"list-offer",component:ListOfferComponent},
   {path:"detail-offer/:id",component:DetailOfferComponent},
   {path:"new-offer",component:NewOfferComponent},
-  {path:"find-offer",component:RechercheComponent},
   {path:"update-offer/:id",component:UpdateOfferComponent},
+  {path:"nav-bar",component: NavBarComponent},
   {path: "", redirectTo: "/home-offer", pathMatch: "full"}
 ];
 

@@ -1,35 +1,5 @@
-<p>recherche works! JK</p>
-<div class="container">
-    <div class="form-group">
-      <label>reacherch</label>
-      <input  [(ngModel)]="keyWord">
-      <button (click)="find()" class="btn btn-primary">Rechearch</button>
-    </div>
+<div  class="form-group">
+    <input class="form-control me-2" [(ngModel)]="keyWord" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit" (click)="find()">Search</button>
+</div>
 
-  </div>
-
-
-
-  <div class="panel panel-primary" id="tableau">
-    <div class="panel-heading">Available  Job offers</div>
-    <div class="panel-body">
-       <table class="table table-striped">
-          <tr>
-            <th>Id offer</th><th>Title offer</th><th>Available places</th>
-            <th>details</th>
-          </tr>
-          <tr *ngFor="let offer of listJobOffers">
-            <td>{{offer.id}}</td>
-            <td>{{offer.title}}</td>
-            <td>{{offer.availablePlace}}</td>
-            <td><a class="clickable" (click)="detailOffer(offer.id)">Detail</a></td>
-          </tr>
-        </table>
-        <ul class="nav nav-pills">
-         
-            <li *ngFor="let item of [].constructor(this.totalPages); let i=index">
-              <a   (click)="goToPage(i)" class="btn btn-success">{{i}}</a>
-            </li>
-           </ul>
-    </div>
-  </div>

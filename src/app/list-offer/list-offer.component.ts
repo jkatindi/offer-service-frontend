@@ -1,3 +1,5 @@
+
+
 import {AfterContentInit, AfterViewInit, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ServiceOffer} from "../services/service.offer";
 import {Router} from "@angular/router";
@@ -7,6 +9,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogDetailComponent} from "../dialog-detail/dialog-detail.component";
 import { Observable } from 'rxjs/internal/Observable';
+import { Subject } from 'rxjs';
+import { StateAppService } from '../services/state-app.service';
 
 @Component({
   selector: 'app-list-offer',
@@ -14,27 +18,31 @@ import { Observable } from 'rxjs/internal/Observable';
   styleUrls: ['./list-offer.component.css']
 })
 export class ListOfferComponent implements OnInit {
-  listJobOffer!: JobOffer[];
+  listJob!: JobOffer[]
+  totalPages!: number ;
+
   currentPage: number=0;
   size: number=2;
-  totalPages: number=0;
-  jobs!: JobOffer[];
-  constructor(private  router:Router,private serviceOffer:ServiceOffer,public dialog: MatDialog) {
-   
-  }
+  listJobOffer!: JobOffer[];
+  
+  constructor(private  router:Router,private serviceOffer:ServiceOffer,
+    public dialog: MatDialog,public stateApp: StateAppService) {
+      
+    }
   ngOnInit() {
-     
-      this.handleGetPageOffers();
+     this.stateApp.dataEmiteur.subscribe((data)=>{
+         this.listJob=data;
+         this.handleGetPageOffers();
+     })
+    
     }
 
   handleGetPageOffers(){
-      this.serviceOffer.getAllJobOffers().subscribe((offiList)=>{
-           this.serviceOffer.getPageJobOffers(this.currentPage,this.size,offiList)
-           .subscribe((pegeableList)=>{
-             this.listJobOffer=pegeableList.jobOffers;
-             this.totalPages=pegeableList.totalPages;
-           })
-      })
+     this.serviceOffer.getPageJobOffers(this.currentPage,this.size,this.listJob)
+     .subscribe((resp)=>{
+        this.listJobOffer=resp.jobOffers;
+        this.totalPages=resp.totalPages;
+     })
   }
 
 
@@ -42,7 +50,8 @@ export class ListOfferComponent implements OnInit {
     this.router.navigate(["/detail-offer",id])
   }
   goToPage(index: number){
-    this.currentPage=index;
-    this.handleGetPageOffers();
+     this.currentPage=index;
+     this.handleGetPageOffers();
+    
   }
 }

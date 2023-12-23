@@ -25,7 +25,7 @@ export  class ServiceOffer
     if(this.jobOffers.length%size !=0)
        totalPages++;
     let pageOffers=this.jobOffers.slice(index,index+size);
-    console.log(pageOffers);
+    //console.log(pageOffers);
     return of({page: page,size: size,totalPages: totalPages,jobOffers: pageOffers });
    }
 
