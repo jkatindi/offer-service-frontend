@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <button (click)="onGetAllOffers()" class="btn btn-sm btn-outline-primary ml-3">All</button>
+    </li>
+
+    <li>
+      <button (click)="onGetAvailableOffers()"    class="btn btn-sm btn-outline-primary ml-3">Available</button>
+    </li>
+    <li>
+      <button (click)="onNewOffer()"    class="btn btn-sm btn-outline-info ml-3">New</button>
+    </li>
+
+  </ul>
+  <app-recherche (offerEventEmetter)="sendEvent($event)"></app-recherche>
+</nav>
+<router-outlet></router-outlet>

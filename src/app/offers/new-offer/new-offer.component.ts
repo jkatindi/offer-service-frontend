@@ -1,13 +1,13 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ServiceOffer} from "../services/service.offer";
-import {JobOffer} from "../models/job-offer";
+import {ServiceOffer} from "../../services/service.offer";
+import {JobOffer} from "../../models/job-offer";
 import {FormBuilder, Validators} from "@angular/forms";
 
-import {TechSkillOffer} from "../models/techSkill-offer";
-import {DegreeOffer} from "../models/degree-offer";
+import {TechSkillOffer} from "../../models/techSkill-offer";
+import {DegreeOffer} from "../../models/degree-offer";
 import {FormGroup} from "@angular/forms";
 import { Router } from '@angular/router';
-import {InfoGeneral} from "../models/info-General";
+import {InfoGeneral} from "../../models/info-General";
 import {MatFormFieldControl} from "@angular/material/form-field";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {MatChip, MatChipInputEvent} from "@angular/material/chips";

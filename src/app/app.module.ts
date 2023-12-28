@@ -2,9 +2,9 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NewOfferComponent } from './new-offer/new-offer.component';
-import { UpdateOfferComponent } from './update-offer/update-offer.component';
-import { ListOfferComponent } from './list-offer/list-offer.component';
+import { NewOfferComponent } from './offers/new-offer/new-offer.component';
+import { UpdateOfferComponent } from './offers/update-offer/update-offer.component';
+import { ListOfferComponent } from './offers/list-offer/list-offer.component';
 import { DetailOfferComponent } from './detail-offer/detail-offer.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ServiceOffer} from "./services/service.offer";
@@ -30,8 +30,10 @@ import { DataStateService } from './services/data-state.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HeaderComponent } from './header/header.component';
 import { AppHttpInterceptor } from './services/app-http.interceptor';
-import { RechercheComponent } from './recherche/recherche.component';
+import { RechercheComponent } from './offers/offer-nav-bar/recherche/recherche.component';
 import { StateAppService } from './services/state-app.service';
+import { OffersComponent } from './offers/offers.component';
+import { OfferNavBarComponent } from './offers/offer-nav-bar/offer-nav-bar.component';
 
 
 
@@ -47,8 +49,10 @@ import { StateAppService } from './services/state-app.service';
     HomeComponent,
     NavBarComponent,
     HeaderComponent,
-    RechercheComponent
-    
+    RechercheComponent,
+    OffersComponent,
+    OfferNavBarComponent
+
   ],
     imports: [
         BrowserModule, AppRoutingModule,

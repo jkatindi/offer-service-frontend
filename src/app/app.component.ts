@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ServiceOffer} from "./services/service.offer";
 import { DataStateService } from './services/data-state.service';
 import { StateAppService } from './services/state-app.service';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, startWith,of } from 'rxjs';
 import { JobOffer } from './models/job-offer';
+import { AppDataState, DataStateEnum } from './state/offer.state';
 
 @Component({
   selector: 'app-root',
@@ -13,17 +14,16 @@ import { JobOffer } from './models/job-offer';
 })
 export class AppComponent implements OnInit{
   title = 'jobOfferApp';
-  ListJob!: Observable<JobOffer[]>;
-  
-  constructor(private stateApp: StateAppService,private service: ServiceOffer) {
-     this.ListJob=this.service.getAllJobOffers();
+  ListJob!: Observable<AppDataState<JobOffer[]>>;
+
+  constructor() {
+
   }
   ngOnInit() {
-     this.ListJob.subscribe(data=>this.stateApp.updateData(data)) 
-   
-   }
-  
-   
 
-  
+   }
+
+
+
+
 }

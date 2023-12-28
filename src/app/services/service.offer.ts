@@ -10,8 +10,8 @@ export  class ServiceOffer
    hostCommand: string= "http://localhost:8087/command/offers";
    jobOffers!:JobOffer[];
 
-   constructor(private  http: HttpClient) {  
-    
+   constructor(private  http: HttpClient) {
+
    }
 
    getAllJobOffers(): Observable<JobOffer[]> {
@@ -65,15 +65,15 @@ export  class ServiceOffer
     return  this.http.get<Array<JobOffer>>(this.hostQuery+"/all/offers/"+keyWord);
   }
 
-  updataResources(resources: JobOffer[]) 
+  updataResources(resources: JobOffer[])
   {
      this.jobOffers=resources;
-  
+
   }
 
   getResourceOffers(): JobOffer[]{
     this.getAllJobOffers().subscribe(data=>this.jobOffers=data)
     return  this.jobOffers;
   }
-  
+
 }
