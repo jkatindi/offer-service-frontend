@@ -6,6 +6,7 @@ import {ServiceOffer} from "../services/service.offer";
 import {MatDialog} from "@angular/material/dialog";
 import {catchError, map, of, startWith} from "rxjs";
 import {ActionEvent, AppDataState, DataStateEnum, OfferActionsTypes} from "../state/offer.state"
+import {EventDriverService} from "../services/event-driver.service";
 
 @Component({
   selector: 'app-offers',
@@ -24,11 +25,18 @@ export class OffersComponent implements OnInit {
   test!: string;
 
   constructor(private  router:Router,private serviceOffer:ServiceOffer,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,private eventDriver: EventDriverService) {
     this.listJobOffer$=this.serviceOffer.getAllJobOffers();
   }
   ngOnInit() {
     this.listJobOffer$?.subscribe(data=>this.offers=data);
+    this.eventDriver.sourceSubjectObservable.subscribe(actionEvent=>{
+      switch (actionEvent.typeAction) {
+        case OfferActionsTypes.GET_ALL_OFFERS: this.getAllOffers(); break;
+        case OfferActionsTypes.GET_AVAILABLE_OFFERS: this.getAvailableOffers(); break;
+        case OfferActionsTypes.SEARCH_OFFERS: this.research(actionEvent.payload); break;
+      }
+    })
   }
 
   handleGetPageOffers(){
@@ -67,14 +75,5 @@ export class OffersComponent implements OnInit {
      this.offers=payload;
      this.handleGetPageOffers();
   }
-
-  handleEvent($event: ActionEvent) {
-     switch ($event.typeAction) {
-       case OfferActionsTypes.GET_ALL_OFFERS: this.getAllOffers(); break;
-       case OfferActionsTypes.GET_AVAILABLE_OFFERS: this.getAvailableOffers(); break;
-       case OfferActionsTypes.SEARCH_OFFERS: this.research($event.payload); break;
-     }
-  }
-
 
 }

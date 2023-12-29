@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { JobOffer } from '../../../models/job-offer';
 import { StateAppService } from '../../../services/state-app.service';
 import {ActionEvent, OfferActionsTypes} from "../../../state/offer.state";
+import {EventDriverService} from "../../../services/event-driver.service";
 
 
 @Component({
@@ -18,8 +19,7 @@ export class RechercheComponent implements OnInit {
   keyWord="";
   test!: any[];
   listJob$?: Observable<JobOffer[]> |null=null;
-  @Output() offerEventEmetter=new EventEmitter<ActionEvent>();
-  constructor(private service: ServiceOffer,private stateAppService: StateAppService) {
+  constructor(private service: ServiceOffer,private eventDriver: EventDriverService) {
      }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class RechercheComponent implements OnInit {
     this.listJob$=this.service.research(this.keyWord);
 
     this.listJob$?.subscribe((data)=>{
-        this.offerEventEmetter.emit({typeAction: OfferActionsTypes.SEARCH_OFFERS,payload: data})
+          this.eventDriver.publishEvent({typeAction: OfferActionsTypes.SEARCH_OFFERS,payload: data})
          console.log(data)
      })
   }

@@ -34,6 +34,7 @@ import { RechercheComponent } from './offers/offer-nav-bar/recherche/recherche.c
 import { StateAppService } from './services/state-app.service';
 import { OffersComponent } from './offers/offers.component';
 import { OfferNavBarComponent } from './offers/offer-nav-bar/offer-nav-bar.component';
+import { StatusComponent } from './status/status.component';
 
 
 
@@ -51,7 +52,8 @@ import { OfferNavBarComponent } from './offers/offer-nav-bar/offer-nav-bar.compo
     HeaderComponent,
     RechercheComponent,
     OffersComponent,
-    OfferNavBarComponent
+    OfferNavBarComponent,
+    StatusComponent
 
   ],
     imports: [

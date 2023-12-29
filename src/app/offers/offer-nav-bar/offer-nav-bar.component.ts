@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActionEvent, OfferActionsTypes} from "../../state/offer.state";
+import {EventDriverService} from "../../services/event-driver.service";
 
 @Component({
   selector: 'app-offer-nav-bar',
@@ -7,18 +8,18 @@ import {ActionEvent, OfferActionsTypes} from "../../state/offer.state";
   styleUrls: ['./offer-nav-bar.component.css']
 })
 export class OfferNavBarComponent implements OnInit {
-   @Output() offerEventEmitter: EventEmitter<ActionEvent>=new  EventEmitter<ActionEvent>();
-  constructor() { }
+
+  constructor(private eventDriver: EventDriverService) { }
 
   ngOnInit(): void {
   }
 
   onGetAllOffers() {
-     this.offerEventEmitter.emit({typeAction: OfferActionsTypes.GET_ALL_OFFERS,payload:null})
+     this.eventDriver.publishEvent({typeAction: OfferActionsTypes.GET_ALL_OFFERS,payload:null})
   }
 
   onGetAvailableOffers() {
-    this.offerEventEmitter.emit({typeAction: OfferActionsTypes.GET_AVAILABLE_OFFERS,payload:null})
+    this.eventDriver.publishEvent({typeAction: OfferActionsTypes.GET_AVAILABLE_OFFERS,payload:null})
   }
 
   onNewOffer() {
@@ -26,8 +27,4 @@ export class OfferNavBarComponent implements OnInit {
   }
 
 
-
-  sendEvent($event: ActionEvent) {
-     this.offerEventEmitter.emit({typeAction:$event.typeAction,payload:$event.payload})
-  }
 }
