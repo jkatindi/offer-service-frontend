@@ -1,6 +1,11 @@
 
-    <div class="form-group">
+    <!--div class="form-group">
 
         <input  [(ngModel)]="keyWord">
         <button (click)="find()" class="btn btn-primary">Rechearch</button>
-       </div>
+       </div-->
+
+    <div class="form-group">
+      <input [(ngModel)]="keyWord" class="fo m-auto" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="find()">Search</button>
+    </div>

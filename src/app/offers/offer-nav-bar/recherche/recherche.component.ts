@@ -26,7 +26,6 @@ export class RechercheComponent implements OnInit {
 
   }
 
-
   find() {
     this.listJob$=this.service.research(this.keyWord);
 
