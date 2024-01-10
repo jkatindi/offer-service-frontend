@@ -31,10 +31,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HeaderComponent } from './header/header.component';
 import { AppHttpInterceptor } from './services/app-http.interceptor';
 import { RechercheComponent } from './offers/offer-nav-bar/recherche/recherche.component';
-import { StateAppService } from './services/state-app.service';
 import { OffersComponent } from './offers/offers.component';
 import { OfferNavBarComponent } from './offers/offer-nav-bar/offer-nav-bar.component';
 import { StatusComponent } from './status/status.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -53,7 +53,8 @@ import { StatusComponent } from './status/status.component';
     RechercheComponent,
     OffersComponent,
     OfferNavBarComponent,
-    StatusComponent
+    StatusComponent,
+    LoginComponent
 
   ],
     imports: [
@@ -65,7 +66,7 @@ import { StatusComponent } from './status/status.component';
         MatTableModule,MatPaginatorModule,MatDialogModule,FormsModule
     ],
   exports: [MatInputModule,MatFormFieldModule],
-  providers: [ServiceOffer,DataStateService,StateAppService,
+  providers: [ServiceOffer,DataStateService,
     {
       provide: MAT_CHIPS_DEFAULT_OPTIONS,
       useValue: {

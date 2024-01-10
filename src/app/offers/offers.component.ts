@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {ServiceOffer} from "../services/service.offer";
 import {MatDialog} from "@angular/material/dialog";
 import {catchError, map, of, startWith} from "rxjs";
-import {ActionEvent, AppDataState, DataStateEnum, OfferActionsTypes} from "../state/offer.state"
+import {AppDataState, DataStateEnum, OfferActionsTypes} from "../state/offer.state"
 import {EventDriverService} from "../services/event-driver.service";
 
 @Component({
@@ -23,6 +23,7 @@ export class OffersComponent implements OnInit {
   listJob$: Observable<AppDataState<PageJobOffer>> |null=null;
   readonly DataStateEnum=DataStateEnum;
   test!: string;
+  erroAddOffer?:string;
 
   constructor(private  router:Router,private serviceOffer:ServiceOffer,
               public dialog: MatDialog,private eventDriver: EventDriverService) {
@@ -35,6 +36,7 @@ export class OffersComponent implements OnInit {
         case OfferActionsTypes.GET_ALL_OFFERS: this.getAllOffers(); break;
         case OfferActionsTypes.GET_AVAILABLE_OFFERS: this.getAvailableOffers(); break;
         case OfferActionsTypes.SEARCH_OFFERS: this.research(actionEvent.payload); break;
+        case OfferActionsTypes.NEW_OFFER: this.addNewJobOffer(actionEvent.payload); break;
       }
     })
   }
@@ -74,6 +76,10 @@ export class OffersComponent implements OnInit {
   research(payload: JobOffer[]){
      this.offers=payload;
      this.handleGetPageOffers();
+  }
+
+  addNewJobOffer(jobOffer: any){
+    alert(JSON.stringify(jobOffer))
   }
 
 }

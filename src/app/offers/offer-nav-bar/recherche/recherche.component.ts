@@ -4,7 +4,6 @@ import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { JobOffer } from '../../../models/job-offer';
-import { StateAppService } from '../../../services/state-app.service';
 import {ActionEvent, OfferActionsTypes} from "../../../state/offer.state";
 import {EventDriverService} from "../../../services/event-driver.service";
 

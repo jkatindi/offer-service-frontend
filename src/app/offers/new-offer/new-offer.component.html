@@ -54,7 +54,7 @@
         <ng-template matStepLabel>technology and Degree</ng-template>
         <mat-form-field class="fields">
           <mat-label>Select degre</mat-label>
-          <mat-select formControlName="requiredDegrees" multiple>
+          <mat-select formControlName="requiredDegrees" multiple="true">
             <mat-option *ngFor="let degree of degrees " [value]="degree">{{degree.degreeName}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -63,8 +63,8 @@
           <mat-chip-list #chipList formControlName="requiredTechs" multiple="true">
             <mat-chip  #c="matChip" *ngFor="let tech of techSkills " [selectable]="selectable"
                        [value]="tech" [removable]="removable" (removed)="remove(tech)">
-                       {{tech.technology}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              {{tech.technology}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
             </mat-chip>
             <input #techInput matInput placeholder="Add tech..."
                    [matAutocomplete]="auto" [matChipInputFor]="chipList"
@@ -76,11 +76,11 @@
               {{tech.technology}}
             </mat-option>
           </mat-autocomplete>
-          </mat-form-field>
-          <mat-form-field class="fields">
-            <mat-label>required Experience</mat-label>
-            <input matInput placeholder="required_experience" formControlName="experMin" required>
-          </mat-form-field><br>
+        </mat-form-field>
+        <mat-form-field class="fields">
+          <mat-label>required Experience</mat-label>
+          <input matInput placeholder="required_experience" formControlName="experMin" required>
+        </mat-form-field><br>
         <mat-form-field class="fields">
              <textarea id="generalProfil" placeholder="the profile of candatate"
                        name="generalProfil" rows="20" cols="100"
@@ -88,10 +88,10 @@
               </textarea>
         </mat-form-field>
 
-          <div class="container">
-            <button class="btn btn-warning" mat-button matStepperPrevious>Previous </button>
-            <button class="btn btn-success next-btn" mat-button (click)="validateOffer()">Confirm</button>
-          </div>
+        <div class="container">
+          <button class="btn btn-warning" mat-button matStepperPrevious>Previous </button>
+          <button class="btn btn-success next-btn" mat-button (click)="validateOffer()">Confirm</button>
+        </div>
       </form>
     </mat-step>
 

@@ -5,7 +5,6 @@ import {JobOffer, PageJobOffer} from "../../models/job-offer";
 import {MatDialog} from "@angular/material/dialog";
 import {Observable} from 'rxjs/internal/Observable';
 import {catchError, map, startWith,of} from 'rxjs';
-import {StateAppService} from '../../services/state-app.service';
 import {AppDataState, DataStateEnum} from '../../state/offer.state';
 
 @Component({
@@ -25,7 +24,7 @@ export class ListOfferComponent implements OnInit {
   readonly DataStateEnum=DataStateEnum;
 
   constructor(private  router:Router,private serviceOffer:ServiceOffer,
-    public dialog: MatDialog,public stateApp: StateAppService) {
+    public dialog: MatDialog) {
       this.listJobOffer$=this.serviceOffer.getAllJobOffers();
     }
   ngOnInit() {

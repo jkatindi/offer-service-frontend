@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ServiceOffer } from './service.offer';
-import { StateAppService } from './state-app.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class DataStateService {
      status: " ",
      keyWord: ""
   }
-  constructor() { 
-    
+  constructor() {
+
   }
   public setOfferState(state: any): void {
     this.offerState={...this.offerState, ...state}
