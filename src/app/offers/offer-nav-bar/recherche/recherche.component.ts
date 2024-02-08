@@ -1,6 +1,5 @@
 import { Component, OnInit,EventEmitter,Output } from '@angular/core';
 import { ServiceOffer } from '../../../services/service.offer';
-import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { JobOffer } from '../../../models/job-offer';

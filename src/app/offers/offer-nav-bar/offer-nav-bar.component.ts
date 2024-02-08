@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActionEvent, OfferActionsTypes} from "../../state/offer.state";
 import {EventDriverService} from "../../services/event-driver.service";
 import {Router} from "@angular/router";
+import {AuthentificationService} from "../../services/authentification.service";
 
 @Component({
   selector: 'app-offer-nav-bar',
@@ -10,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class OfferNavBarComponent implements OnInit {
 
-  constructor(private eventDriver: EventDriverService,private router: Router) { }
+  constructor(private eventDriver: EventDriverService,private router: Router,private authServ: AuthentificationService) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +25,7 @@ export class OfferNavBarComponent implements OnInit {
   }
 
   onNewOffer() {
-    this.router.navigate(["/new-offer"])
+    this.router.navigate(["/admin/new-offer"])
   }
 
 

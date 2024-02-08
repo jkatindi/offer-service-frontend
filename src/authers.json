@@ -1,0 +1,38 @@
+{
+  "url":"http://localhost:8087/query/offers/all",
+  "body":null,
+  "reportProgress":false,
+  "withCredentials":false,
+  "responseType":"json",
+  "method":"GET",
+  "headers":
+      {
+        "normalizedNames":{},
+        "lazyUpdate":
+             [
+               {
+                 "name":"Authorization",
+                 "value":"Bearer JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqa2wxIiwiZXhwIjoxNzA2MDIyNDY1LCJpYXQiOjE3MDYwMTg4NjUsInNjb3BlIjoiQURNSU4gVVNFUiJ9.wDSYERhWuOddCDC9sZxYnXZODllrl6SEsv7Ckb1fSwt7mbWRI0fszQQHksM5CsUFvAMRq07h_m29F7MKmUizRw",
+                 "op":"s"
+               }],
+        "headers":{},
+        "lazyInit":
+            {
+              "normalizedNames":{},
+              "lazyUpdate":null,
+              "headers":{}
+            }
+      },
+       "context":
+          {
+            "map":{}
+          },
+      "params":
+         {
+           "updates":null,
+           "cloneFrom":null,
+           "encoder":{},
+           "map":{}
+         },
+      "urlWithParams":"http://localhost:8087/query/offers/all"
+}

@@ -70,12 +70,14 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+
           "configurations": {
             "production": {
-              "browserTarget": "jobOfferApp:build:production"
+              "browserTarget": "jobOfferApp:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
-              "browserTarget": "jobOfferApp:build:development"
+              "buildTarget": "jobOfferApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,6 +86,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "jobOfferApp:build"
+
           }
         },
         "test": {
@@ -93,6 +96,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -106,6 +110,5 @@
         }
       }
     }
-  },
-  "defaultProject": "jobOfferApp"
+  }
 }

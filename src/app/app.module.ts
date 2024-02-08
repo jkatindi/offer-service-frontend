@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NewOfferComponent } from './offers/new-offer/new-offer.component';
 import { UpdateOfferComponent } from './offers/update-offer/update-offer.component';
-import { ListOfferComponent } from './offers/list-offer/list-offer.component';
 import { DetailOfferComponent } from './detail-offer/detail-offer.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ServiceOffer} from "./services/service.offer";
@@ -29,12 +28,15 @@ import { HomeComponent } from './home/home.component';
 import { DataStateService } from './services/data-state.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HeaderComponent } from './header/header.component';
-import { AppHttpInterceptor } from './services/app-http.interceptor';
 import { RechercheComponent } from './offers/offer-nav-bar/recherche/recherche.component';
 import { OffersComponent } from './offers/offers.component';
 import { OfferNavBarComponent } from './offers/offer-nav-bar/offer-nav-bar.component';
 import { StatusComponent } from './status/status.component';
 import { LoginComponent } from './login/login.component';
+import {RequestInterceptorService} from "./services/request-interceptor.service";
+import {LogOutComponent} from "./log-out/log-out.component";
+
+
 
 
 
@@ -43,7 +45,6 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     NewOfferComponent,
     UpdateOfferComponent,
-    ListOfferComponent,
     DetailOfferComponent,
     DialogDetailComponent,
     DialogModifyComponent,
@@ -54,7 +55,8 @@ import { LoginComponent } from './login/login.component';
     OffersComponent,
     OfferNavBarComponent,
     StatusComponent,
-    LoginComponent
+    LoginComponent,
+    LogOutComponent
 
   ],
     imports: [
@@ -73,9 +75,8 @@ import { LoginComponent } from './login/login.component';
         separatorKeyCodes: [ENTER, COMMA]
       }
     },
-    {
-      provide: HTTP_INTERCEPTORS,useClass : AppHttpInterceptor,multi : true
-    }
+    {provide: HTTP_INTERCEPTORS,useClass: RequestInterceptorService,multi: true}
+
   ],
   bootstrap: [AppComponent]
 })

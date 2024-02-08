@@ -27,8 +27,8 @@ export class AuthentificationService {
   loadProfile(data: any) {
     this.isAuthenticated=true;
     this.accessToken=data['access-token'];
-    let decodedJwt = jwtDecode(this.accessToken);
-    this.username=decodedJwt.sub
-    console.log(decodedJwt)
+    //let decodedJwt = jwtDecode(data);
+    //console.log(JSON.stringify(decodedJwt))
+    console.log(JSON.stringify(data))
   }
 }

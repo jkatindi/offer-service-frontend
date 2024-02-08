@@ -4,6 +4,7 @@ import { DataStateService } from './services/data-state.service';
 import { Observable, catchError, map, startWith,of } from 'rxjs';
 import { JobOffer } from './models/job-offer';
 import { AppDataState, DataStateEnum } from './state/offer.state';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -12,16 +13,10 @@ import { AppDataState, DataStateEnum } from './state/offer.state';
 })
 export class AppComponent implements OnInit{
   title = 'jobOfferApp';
-  ListJob!: Observable<AppDataState<JobOffer[]>>;
 
-  constructor() {
-
+  constructor(private  router: Router) {
   }
-  ngOnInit() {
-
+  ngOnInit() : void  {
+   
    }
-
-
-
-
 }

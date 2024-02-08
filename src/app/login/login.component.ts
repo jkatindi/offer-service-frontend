@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthentificationService} from "../services/authentification.service";
 import {jwtDecode} from "jwt-decode";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +10,11 @@ import {jwtDecode} from "jwt-decode";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  isAuthenticated: boolean=false;
   roles : any;
   username: any;
   formLogin!: FormGroup;
-  constructor(private fb: FormBuilder,private  authService: AuthentificationService) { }
+  jwtdecode!: any;
+  constructor(private fb: FormBuilder,protected  authService: AuthentificationService,private router: Router) { }
 
   ngOnInit(): void {
     this.formLogin=this.fb.group({
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
     this.authService.login(username,password)
       .subscribe({
         next: data => {
-           this.authService.loadProfile(data)
+        
+           this.authService.loadProfile(data);
         },
         error: err => {
           console.log(err)

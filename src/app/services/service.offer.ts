@@ -1,7 +1,8 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {map, Observable, of} from "rxjs";
 import {JobOffer, PageJobOffer} from "../models/job-offer";
+import {AuthentificationService} from "./authentification.service";
 
 @Injectable()
 export  class ServiceOffer
@@ -10,7 +11,8 @@ export  class ServiceOffer
    hostCommand: string= "http://localhost:8087/command/offers";
    jobOffers!:JobOffer[];
 
-   constructor(private  http: HttpClient) {
+   constructor(private  http: HttpClient,private authService: AuthentificationService) {
+
 
    }
 
